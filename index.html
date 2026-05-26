@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Phoenix Pod — Surviving AI</title>
+  <meta name="description" content="A sharp, no-hype AI playbook for operators, founders, and professionals. Learn. Automate. Operate. Free download.">
+  <meta property="og:title" content="Surviving AI — A Practical Playbook">
+  <meta property="og:description" content="A sharp, no-hype guide for operators, founders, and professionals who need AI to work for them.">
+  <meta property="og:url" content="https://phoenixpod.gumroad.com/l/surviving-ai">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:       #0A0606;
+      --ink-800:     #1A1212;
+      --ink-700:     #251A1A;
+      --text-primary:#F4ECDF;
+      --text-muted:  #C9C0B0;
+      --text-dim:    #8A7D70;
+      --ember:       #FF6A1A;
+      --ember-dark:  #7A1A0E;
+      --gold:        #E0A84A;
+      --gold-soft:   #D4A373;
+      --teal:        #6FB6B3;
+      --sky:         #7FA8D1;
+      --prismatic:   linear-gradient(90deg, #D4A373, #FF6A1A, #F8F4EC, #6FB6B3, #7FA8D1);
+      --ember-grad:  linear-gradient(135deg, #E0A84A 0%, #FF6A1A 50%, #7A1A0E 100%);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(10,6,6,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212,163,115,0.12);
+    }
+    .nav-brand {
+      font-family: 'Cinzel', serif; font-size: 13px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--gold-soft);
+      text-decoration: none;
+    }
+    .nav-cta {
+      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--black); background: var(--ember);
+      padding: 8px 20px; text-decoration: none;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--gold); }
+
+    /* ── PRISMATIC BAR ── */
+    .prismatic-bar {
+      height: 3px;
+      background: var(--prismatic);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(255,106,26,0.13) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(212,163,115,0.10) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(122,26,14,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 860px; }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--black); background: var(--ember);
+      padding: 5px 14px; margin-bottom: 32px;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif; font-size: clamp(72px, 14vw, 160px);
+      font-weight: 900; line-height: .88; letter-spacing: .02em; text-transform: uppercase;
+      background: var(--ember-grad);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 28px;
+    }
+
+    .hero-rule {
+      width: 64px; height: 3px;
+      background: var(--prismatic);
+      margin: 0 auto 28px;
+    }
+
+    .hero-sub {
+      font-family: 'Cinzel', serif; font-size: clamp(13px, 2vw, 17px); font-weight: 400;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+    }
+
+    .hero-desc {
+      font-family: 'Inter', sans-serif; font-size: clamp(15px, 2vw, 18px);
+      color: var(--text-muted); line-height: 1.65;
+      max-width: 520px; margin: 0 auto 44px;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--black); background: var(--ember);
+      padding: 16px 40px; text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .hero-cta:hover { background: var(--gold); transform: translateY(-2px); }
+
+    .hero-note {
+      margin-top: 16px;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--text-dim); letter-spacing: .06em;
+    }
+
+    /* ── STAGES ── */
+    .stages {
+      padding: 100px 24px;
+      position: relative;
+    }
+    .stages::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,163,115,0.25), transparent);
+    }
+
+    .section-label {
+      font-family: 'Cinzel', serif; font-size: 11px; font-weight: 700;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--ember); text-align: center; margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+      letter-spacing: .04em; text-align: center; color: var(--text-primary);
+      margin-bottom: 60px;
+    }
+
+    .stages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      max-width: 1000px; margin: 0 auto;
+    }
+
+    .stage-card {
+      padding: 36px 32px;
+      position: relative;
+    }
+    .stage-card:nth-child(1) { background: rgba(255,106,26,.08); border-top: 3px solid var(--ember); }
+    .stage-card:nth-child(2) { background: rgba(212,163,115,.10); border-top: 3px solid var(--gold-soft); }
+    .stage-card:nth-child(3) { background: rgba(180,122,43,.08); border-top: 3px solid #B47A2B; }
+
+    .stage-num {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--ember); margin-bottom: 12px;
+    }
+    .stage-card:nth-child(2) .stage-num { color: var(--gold-soft); }
+    .stage-card:nth-child(3) .stage-num { color: #B47A2B; }
+
+    .stage-name {
+      font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 12px; line-height: 1.3;
+    }
+
+    .stage-desc {
+      font-family: 'Inter', sans-serif; font-size: 14px;
+      color: var(--text-muted); line-height: 1.65;
+    }
+
+    .stage-items {
+      margin-top: 16px; padding: 0;
+      list-style: none; display: flex; flex-direction: column; gap: 8px;
+    }
+    .stage-items li {
+      font-family: 'Inter', sans-serif; font-size: 13px;
+      color: var(--text-muted); line-height: 1.5;
+      padding-left: 16px; position: relative;
+    }
+    .stage-items li::before {
+      content: '→';
+      position: absolute; left: 0;
+      color: var(--ember); font-size: 11px;
+    }
+    .stage-card:nth-child(2) .stage-items li::before { color: var(--gold-soft); }
+    .stage-card:nth-child(3) .stage-items li::before { color: #B47A2B; }
+
+    /* ── WHO IT'S FOR ── */
+    .who {
+      padding: 100px 24px;
+      background: var(--ink-800);
+      position: relative;
+    }
+    .who::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,163,115,0.25), transparent);
+    }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      max-width: 900px; margin: 0 auto;
+    }
+
+    .who-card {
+      padding: 28px 24px;
+      border: 1px solid rgba(212,163,115,0.15);
+      background: rgba(255,255,255,0.02);
+    }
+    .who-icon {
+      font-size: 24px; margin-bottom: 12px;
+    }
+    .who-title {
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 6px;
+    }
+    .who-desc {
+      font-family: 'Inter', sans-serif; font-size: 13px;
+      color: var(--text-muted); line-height: 1.55;
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 50%, rgba(255,106,26,0.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-band-inner { position: relative; z-index: 1; }
+
+    .cta-band-title {
+      font-family: 'Cinzel', serif; font-size: clamp(32px, 5vw, 56px); font-weight: 900;
+      letter-spacing: .04em; text-transform: uppercase;
+      background: var(--ember-grad);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 20px;
+    }
+
+    .cta-band-sub {
+      font-family: 'Inter', sans-serif; font-size: 17px;
+      color: var(--text-muted); line-height: 1.65;
+      max-width: 480px; margin: 0 auto 40px;
+    }
+
+    .cta-band-btn {
+      display: inline-block;
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--black); background: var(--ember);
+      padding: 18px 48px; text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .cta-band-btn:hover { background: var(--gold); transform: translateY(-2px); }
+
+    .cta-url {
+      margin-top: 16px;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      color: var(--text-dim); letter-spacing: .06em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 24px;
+      border-top: 1px solid rgba(212,163,115,0.12);
+      display: flex; flex-direction: column;
+      align-items: center; gap: 12px;
+      text-align: center;
+    }
+    .footer-brand {
+      font-family: 'Cinzel', serif; font-size: 13px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--gold-soft);
+    }
+    .footer-tag {
+      font-family: 'Inter', sans-serif; font-size: 12px;
+      color: var(--text-dim); letter-spacing: .08em;
+    }
+    .footer-bar {
+      width: 40px; height: 2px;
+      background: var(--prismatic);
+      margin: 4px auto 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="prismatic-bar"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="#">The Phoenix Pod ✦</a>
+    <a class="nav-cta" href="https://phoenixpod.gumroad.com/l/surviving-ai" target="_blank" rel="noopener">Get Free Playbook</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">Free Playbook — No Hype</div>
+      <h1 class="hero-title">Surviving<br>AI</h1>
+      <div class="hero-rule"></div>
+      <p class="hero-sub">Learn. Automate. Operate.</p>
+      <p class="hero-desc">A sharp, no-hype guide for operators, founders, and professionals who need AI to work for them.</p>
+      <a class="hero-cta" href="https://phoenixpod.gumroad.com/l/surviving-ai" target="_blank" rel="noopener">Download Free — No Credit Card</a>
+      <p class="hero-note">phoenixpod.gumroad.com/l/surviving-ai</p>
+    </div>
+  </section>
+
+  <!-- STAGES -->
+  <section class="stages" id="playbook">
+    <div class="section-label">What's Inside</div>
+    <h2 class="section-title">Three Stages. One Playbook.</h2>
+    <div class="stages-grid">
+      <div class="stage-card">
+        <div class="stage-num">Stage 01</div>
+        <div class="stage-name">Survive<br>Get Fluent</div>
+        <p class="stage-desc">Stop drowning in AI noise. Build a daily practice that actually sticks.</p>
+        <ul class="stage-items">
+          <li>The right tools for your workflow</li>
+          <li>Prompting habits that save hours</li>
+          <li>Daily 7-step AI checklist</li>
+        </ul>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num">Stage 02</div>
+        <div class="stage-name">Thrive<br>Ship Automations</div>
+        <p class="stage-desc">Turn repetitive work into automated systems you own.</p>
+        <ul class="stage-items">
+          <li>Automation patterns that scale</li>
+          <li>6-step ship checklist</li>
+          <li>Copy-paste brief template</li>
+        </ul>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num">Stage 03</div>
+        <div class="stage-name">Lead<br>Operate at Scale</div>
+        <p class="stage-desc">Run AI across your team or business like an operator, not a tourist.</p>
+        <ul class="stage-items">
+          <li>Full operating model</li>
+          <li>Governance framework</li>
+          <li>Pilot-to-production playbook</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="who" id="who">
+    <div class="section-label">Who This Is For</div>
+    <h2 class="section-title" style="margin-bottom:48px;">Built for People Doing Real Work</h2>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-icon">⚙️</div>
+        <div class="who-title">Operators</div>
+        <div class="who-desc">Running teams and processes who need AI to reduce load, not add it.</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">🚀</div>
+        <div class="who-title">Founders</div>
+        <div class="who-desc">Building lean who can't afford to hire before AI is doing its share.</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">💼</div>
+        <div class="who-title">Professionals</div>
+        <div class="who-desc">Lawyers, consultants, marketers — anyone whose edge is their thinking.</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">🌱</div>
+        <div class="who-title">Beginners</div>
+        <div class="who-desc">Starting from zero who want honest guidance, not just YouTube hype.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <div class="section-label">Free Download</div>
+      <h2 class="cta-band-title">Get the Playbook</h2>
+      <p class="cta-band-sub">Download Surviving AI free. Read it in 20 minutes. Use it for months.</p>
+      <a class="cta-band-btn" href="https://phoenixpod.gumroad.com/l/surviving-ai" target="_blank" rel="noopener">Download Free Now</a>
+      <p class="cta-url">phoenixpod.gumroad.com/l/surviving-ai</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">The Phoenix Pod ✦</div>
+    <div class="footer-tag">Toronto · AI Bootcamp for Operators, Founders & Professionals</div>
+    <div class="footer-bar"></div>
+  </footer>
+
+  <!-- BOTTOM PRISMATIC BAR -->
+  <div class="prismatic-bar"></div>
+
+</body>
+</html>
