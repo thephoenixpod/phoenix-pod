@@ -251,6 +251,26 @@
       color: var(--text-muted); line-height: 1.55;
     }
 
+    /* ── WAITLIST ── */
+    .waitlist {
+      padding: 100px 24px;
+      background: var(--ink-700);
+      position: relative;
+    }
+    .waitlist::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,163,115,0.25), transparent);
+    }
+    .tally-embed {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,163,115,0.15);
+      padding: 40px 32px;
+    }
+
     /* ── CTA BAND ── */
     .cta-band {
       padding: 100px 24px;
@@ -407,6 +427,21 @@
         <div class="who-title">Beginners</div>
         <div class="who-desc">Starting from zero who want honest guidance, not just YouTube hype.</div>
       </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST SECTION -->
+  <section class="waitlist" id="waitlist">
+    <div class="section-label">Coming June 5</div>
+    <h2 class="section-title">Join the AI Course Waitlist</h2>
+    <p style="text-align:center; color:var(--text-muted); font-size:16px; max-width:480px; margin: 0 auto 48px; line-height:1.65;">
+      Get early access + a founding member discount when we launch. Pick your path below.
+    </p>
+    <div class="tally-embed">
+      <iframe data-tally-src="https://tally.so/embed/Npd8Op?alignLeft=0&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0"
+        title="AI Course Waitlist" style="border:none; background:transparent;"></iframe>
+      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
     </div>
   </section>
 
